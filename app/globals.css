@@ -3,6 +3,21 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #2a9d5f;
+  --primary-light: #e8f5e9;
+  --primary-dark: #1b6f3f;
+}
+
+/* Logo styling */
+.logo-image {
+  background: transparent;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
 }
 
 @theme inline {
