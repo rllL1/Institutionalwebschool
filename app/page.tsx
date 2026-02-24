@@ -25,32 +25,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Stats */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="text-center p-8 bg-white rounded-lg shadow hover:shadow-xl transition-shadow">
-            <div className="text-4xl font-bold" style={{ color: '#2a9d5f' }}>2500+</div>
-            <p className="text-gray-600 mt-2 font-semibold">Students</p>
-            <p className="text-sm text-gray-500">Across all streams</p>
-          </div>
-          <div className="text-center p-8 bg-white rounded-lg shadow hover:shadow-xl transition-shadow">
-            <div className="text-4xl font-bold" style={{ color: '#2a9d5f' }}>150+</div>
-            <p className="text-gray-600 mt-2 font-semibold">Faculty Members</p>
-            <p className="text-sm text-gray-500">Highly qualified</p>
-          </div>
-          <div className="text-center p-8 bg-white rounded-lg shadow hover:shadow-xl transition-shadow">
-            <div className="text-4xl font-bold" style={{ color: '#2a9d5f' }}>95%</div>
-            <p className="text-gray-600 mt-2 font-semibold">Pass Rate</p>
-            <p className="text-sm text-gray-500">Consistently high</p>
-          </div>
-          <div className="text-center p-8 bg-white rounded-lg shadow hover:shadow-xl transition-shadow">
-            <div className="text-4xl font-bold" style={{ color: '#2a9d5f' }}>25+</div>
-            <p className="text-gray-600 mt-2 font-semibold">Years of Excellence</p>
-            <p className="text-sm text-gray-500">Since establishment</p>
-          </div>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">

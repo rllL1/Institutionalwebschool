@@ -27,7 +27,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             {/* Logo */}
             <Image
-              src="/images/sdsclogo.jpg"
+              src="/images/sdsclogo1.png"
               alt="SDSC Logo"
               width={50}
               height={50}
