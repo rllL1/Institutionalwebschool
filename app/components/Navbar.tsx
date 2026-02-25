@@ -11,23 +11,20 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'The College', href: '/college' },
     { name: 'Academics', href: '/academics' },
-    { name: 'Admission', href: '/admission' },
     { name: 'Administration', href: '/administration' },
     { name: 'Campus Life', href: '/campus-life' },
-    { name: 'Events', href: '/events' },
-    { name: 'Opportunity', href: '/opportunity' },
     { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg" style={{ borderBottom: '4px solid #2a9d5f' }}>
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center py-3">
+        <div className="flex items-center py-3 gap-6">
           {/* Logo and Title Section */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             {/* Logo */}
             <Image
-              src="/images/sdsclogo.jpg"
+              src="/images/sdsclogo1.png"
               alt="SDSC Logo"
               width={50}
               height={50}
@@ -49,13 +46,16 @@ export default function Navbar() {
             </div>
           </div>
 
+          {/* Divider */}
+          <div className="hidden lg:block w-px h-10 bg-gray-300 flex-shrink-0"></div>
+
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden lg:flex items-center gap-6 flex-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700"
+                className="px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap"
               >
                 {item.name}
               </Link>
@@ -63,7 +63,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          <div className="lg:hidden ml-auto">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md transition-colors"
