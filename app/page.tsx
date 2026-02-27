@@ -1,29 +1,14 @@
+import HeroCarousel from './components/HeroCarousel';
+import EventsCarousel from './components/EventsCarousel';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section 
-        className="py-24 px-4 text-white text-center relative overflow-hidden"
-        style={{ backgroundColor: '#2a9d5f' }}
-      >
-        <div className="max-w-4xl mx-auto relative z-10">
-          <h1 className="text-6xl font-bold mb-4 drop-shadow-lg">Welcome to St. Dominic Savio College</h1>
-          <p className="text-2xl mb-8 drop-shadow-md">Empowering minds, shaping futures, building excellence</p>
-          <div className="flex gap-4 justify-center">
-            <button 
-              className="bg-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105"
-              style={{ color: '#2a9d5f' }}
-            >
-              Explore More
-            </button>
-            <button 
-              className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-all"
-            >
-              Learn More
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Hero Carousel */}
+      <HeroCarousel />
+
+      {/* Life at SDSC Section */}
+      <EventsCarousel />
 
       {/* Features Section */}
       <section className="py-16 px-4 bg-white">
@@ -80,51 +65,6 @@ export default function Home() {
                 <p className="text-gray-600">Expert counseling, placement support with 85%+ placement rate, and internship opportunities</p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-16 px-4" style={{ backgroundColor: '#f0f9f6' }}>
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12" style={{ color: '#2a9d5f' }}>
-            What Our Students Say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="text-gray-600 mb-4">⭐⭐⭐⭐⭐</p>
-              <p className="text-gray-700 italic mb-4">"The education I received here prepared me excellently for university. The faculty is supportive and caring."</p>
-              <p className="font-semibold" style={{ color: '#2a9d5f' }}>- Rajesh Kumar, Class of 2024</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="text-gray-600 mb-4">⭐⭐⭐⭐⭐</p>
-              <p className="text-gray-700 italic mb-4">"Best decision ever. The campus environment and extracurricular activities shaped my personality."</p>
-              <p className="font-semibold" style={{ color: '#2a9d5f' }}>- Priya Sharma, Class of 2023</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="text-gray-600 mb-4">⭐⭐⭐⭐⭐</p>
-              <p className="text-gray-700 italic mb-4">"The placement assistance helped me secure a great job. The college truly cares about student success."</p>
-              <p className="font-semibold" style={{ color: '#2a9d5f' }}>- Arjun Patel, Class of 2022</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section 
-        className="py-16 px-4 text-white"
-        style={{ backgroundColor: '#2a9d5f' }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Join Us?</h2>
-          <p className="text-xl mb-8">Take the first step towards a brighter future with St. Dominic Savio College</p>
-          <div className="flex gap-4 justify-center">
-            <button className="bg-white px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105" style={{ color: '#2a9d5f' }}>
-              Apply Now
-            </button>
-            <button className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-all">
-              Request Brochure
-            </button>
           </div>
         </div>
       </section>
