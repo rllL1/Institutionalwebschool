@@ -450,13 +450,10 @@ THE HISTORY OF ST. DOMINIC SAVIO COLLEGE It started out as a dream. Then slowly,
             >
               <div className="relative rounded-xl overflow-hidden shadow-2xl h-96">
                 <div className="bg-gray-300 rounded-lg overflow-hidden w-full h-full flex items-center justify-center">
-                  <Image
-                    src="/images/st-dominic-savio.jpg"
-                    alt="St. Dominic Savio"
-                    width={384}
-                    height={384}
-                    className="w-full h-full object-cover"
-                  />
+                  <div className="flex flex-col items-center justify-center text-gray-500">
+                    <span className="text-6xl mb-4">🙏</span>
+                    <span className="text-lg font-semibold">St. Dominic Savio</span>
+                  </div>
                 </div>
               </div>
             </motion.div>

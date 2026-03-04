@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function Academics() {
@@ -122,16 +121,13 @@ export default function Academics() {
                   whileHover={{ y: -10 }}
                 >
                   <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
+                    className="bg-gradient-to-br from-green-100 to-emerald-200 overflow-hidden aspect-video flex items-center justify-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Image
-                      src={`/images/college-science-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="flex flex-col items-center justify-center text-green-700">
+                      <span className="text-5xl mb-2">🔬</span>
+                      <span className="text-sm font-semibold">{course}</span>
+                    </div>
                   </motion.div>
                   <div className="p-6">
                     <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
@@ -164,16 +160,13 @@ export default function Academics() {
                   whileHover={{ y: -10 }}
                 >
                   <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
+                    className="bg-gradient-to-br from-green-100 to-emerald-200 overflow-hidden aspect-video flex items-center justify-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Image
-                      src={`/images/college-commerce-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="flex flex-col items-center justify-center text-green-700">
+                      <span className="text-5xl mb-2">💼</span>
+                      <span className="text-sm font-semibold">{course}</span>
+                    </div>
                   </motion.div>
                   <div className="p-6">
                     <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
@@ -206,16 +199,13 @@ export default function Academics() {
                   whileHover={{ y: -10 }}
                 >
                   <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
+                    className="bg-gradient-to-br from-green-100 to-emerald-200 overflow-hidden aspect-video flex items-center justify-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Image
-                      src={`/images/college-arts-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="flex flex-col items-center justify-center text-green-700">
+                      <span className="text-5xl mb-2">📚</span>
+                      <span className="text-sm font-semibold">{course}</span>
+                    </div>
                   </motion.div>
                   <div className="p-6">
                     <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
@@ -248,16 +238,13 @@ export default function Academics() {
                   whileHover={{ y: -10 }}
                 >
                   <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
+                    className="bg-gradient-to-br from-green-100 to-emerald-200 overflow-hidden aspect-video flex items-center justify-center"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <Image
-                      src={`/images/college-vocational-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="flex flex-col items-center justify-center text-green-700">
+                      <span className="text-5xl mb-2">🛠️</span>
+                      <span className="text-sm font-semibold">{course}</span>
+                    </div>
                   </motion.div>
                   <div className="p-6">
                     <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
@@ -295,17 +282,14 @@ export default function Academics() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8">
               <motion.div 
-                className="bg-gray-300 rounded-lg overflow-hidden aspect-square flex items-center justify-center"
+                className="bg-gradient-to-br from-green-100 to-emerald-200 rounded-lg overflow-hidden aspect-square flex items-center justify-center"
                 variants={slideInLeft}
                 whileHover={{ scale: 1.02 }}
               >
-                <Image
-                  src="/images/senior-high-students.jpg"
-                  alt="Senior High Students"
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
-                />
+                <div className="flex flex-col items-center justify-center text-green-700">
+                  <span className="text-7xl mb-3">🎓</span>
+                  <span className="text-lg font-semibold">Senior High Students</span>
+                </div>
               </motion.div>
               <motion.div variants={slideInRight}>
                 <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Our Programs</h3>
@@ -374,17 +358,14 @@ export default function Academics() {
                 </div>
               </motion.div>
               <motion.div 
-                className="bg-gray-300 rounded-lg overflow-hidden aspect-square flex items-center justify-center"
+                className="bg-gradient-to-br from-green-100 to-emerald-200 rounded-lg overflow-hidden aspect-square flex items-center justify-center"
                 variants={slideInRight}
                 whileHover={{ scale: 1.02 }}
               >
-                <Image
-                  src="/images/junior-high-students.jpg"
-                  alt="Junior High Students"
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
-                />
+                <div className="flex flex-col items-center justify-center text-green-700">
+                  <span className="text-7xl mb-3">📖</span>
+                  <span className="text-lg font-semibold">Junior High Students</span>
+                </div>
               </motion.div>
             </div>
           </motion.div>
