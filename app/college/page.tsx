@@ -280,6 +280,18 @@ export default function College() {
                 </div>
                 <div className="space-y-1 font-semibold not-italic text-green-700">
                   <p>Amen.</p>
+          
+          <div className="mb-6">
+            <motion.div 
+              className="float-right w-full md:w-96 ml-6 mb-4"
+              variants={slideInRight}
+            >
+              <div className="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                <div className="bg-gray-300 rounded-lg overflow-hidden w-full h-full flex items-center justify-center">
+                  <div className="flex flex-col items-center justify-center text-gray-500">
+                    <span className="text-6xl mb-4">🙏</span>
+                    <span className="text-lg font-semibold">St. Dominic Savio</span>
+                  </div>
                 </div>
               </div>
             </div>

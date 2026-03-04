@@ -1,469 +1,311 @@
 'use client';
 
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+/* ─── Arrow Icon ─── */
+const ArrowRight = ({ className = 'w-4 h-4' }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+  </svg>
+);
+
+/* ─── Data ─── */
+const collegeDepartments = [
+  {
+    title: 'College of Nursing / Health Sciences',
+    courses: ['BS in Nursing', 'BS in Psychology'],
+  },
+  {
+    title: 'College of Arts, Science, and Education',
+    courses: ['Bachelor of Secondary Education', 'Bachelor of Elementary Education', 'BA in English'],
+  },
+  {
+    title: 'College of Engineering & Computer Studies',
+    courses: ['BS in Information Technology', 'BS in Computer Science', 'BS in Information Systems', '2-yr IT', '2-yr ACT'],
+  },
+  {
+    title: 'College of Business Administration & Accountancy',
+    courses: ['BS in Business Administration', 'BS in Accountancy', 'BS in Management Accounting'],
+  },
+  {
+    title: 'School of Law',
+    courses: ['Juris Doctor (JD)'],
+  },
+];
+
+const basicEdPrograms = [
+  {
+    title: 'Senior High School',
+    courses: ['STEM', 'ABM', 'HUMSS'],
+  },
+  {
+    title: 'Junior High School',
+    courses: ['Grades 7 – 10 Core Curriculum'],
+  },
+  {
+    title: 'Grade School',
+    courses: ['Grades 1 – 6 Foundational Program'],
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.08, ease: 'easeOut' as const },
+  }),
+};
+
+/* ─── Page ─── */
 export default function Academics() {
-  const fadeInUp = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    transition: { duration: 2, ease: 'easeOut' }
-  };
-
-  const staggerContainer = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
-  };
-
-  const staggerItem = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    transition: { duration: 2 }
-  };
-
-  const slideInLeft = {
-    initial: { opacity: 0, x: -50 },
-    whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 0.6 }
-  };
-
-  const slideInRight = {
-    initial: { opacity: 0, x: 50 },
-    whileInView: { opacity: 1, x: 0 },
-    transition: { duration: 0.6 }
-  };
-
-  const scaleIn = {
-    initial: { opacity: 0, scale: 0.8 },
-    whileInView: { opacity: 1, scale: 1 },
-    transition: { duration: 0.6 }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-white">
 
+      {/* ━━━ Hero ━━━ */}
+      <section className="relative h-[520px] md:h-[560px] overflow-hidden">
+        <Image
+          src="/images/background.png"
+          alt="SDSC Campus"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-green-950/40 via-black/55 to-black/75" />
 
-      <div className="max-w-6xl mx-auto px-4 py-20">
-        {/* Academic Overview */}
-        <motion.section 
-          className="mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2 }}
-        >
-          <motion.h2 
-            className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent"
-            variants={fadeInUp}
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+          <motion.p
+            className="text-green-300 text-xs font-semibold tracking-[0.25em] uppercase mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            Academic Streams Overview
-          </motion.h2>
-          <motion.p 
-            className="text-xl text-gray-700 text-center mb-12 max-w-3xl mx-auto"
-            variants={staggerItem}
-          >
-            Our comprehensive academic programs are designed to nurture critical thinking, creativity, and excellence 
-            across diverse fields of study and student levels.
+            St. Dominic Savio College — Ibaan
           </motion.p>
+          <motion.h1
+            className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            Academics
+          </motion.h1>
+          <motion.p
+            className="text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Discover our comprehensive academic programs designed to nurture excellence,
+            critical thinking, and holistic development at every level.
+          </motion.p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {[
-              { stream: 'Science', icon: '🔬', courses: 'Physics, Chemistry, Biology' },
-              { stream: 'Commerce', icon: '💼', courses: 'Accountancy, Business, Economics' },
-              { stream: 'Arts', icon: '📚', courses: 'English, History, Geography' },
-              { stream: 'Vocational', icon: '🛠️', courses: 'IT, Digital Marketing, Healthcare' }
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx} 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-all text-center border-t-4 border-green-600 cursor-pointer"
-                variants={staggerItem}
-                whileHover={{ y: -10 }}
-                initial="initial"
-                whileInView="whileInView"
+      {/* ━━━ Two Pathways ━━━ */}
+      <section className="max-w-6xl mx-auto px-4 -mt-20 relative z-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Basic Education */}
+          <Link href="/academics/basic-education">
+            <motion.div
+              className="relative group rounded-2xl overflow-hidden h-72 cursor-pointer shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Image
+                src="/images/homepage2.jpg"
+                alt="Basic Education"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-7">
+                <span className="text-green-400 text-[11px] font-semibold tracking-[0.2em] uppercase">K-12 Programs</span>
+                <h3 className="text-white text-2xl font-bold mt-1 mb-1">Basic Education</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-xs">
+                  Grade School through Senior High School — foundational learning rooted in Savian values.
+                </p>
+                <span className="inline-flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Explore <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </motion.div>
+          </Link>
+
+          {/* College Programs */}
+          <Link href="/academics/college-programs">
+            <motion.div
+              className="relative group rounded-2xl overflow-hidden h-72 cursor-pointer shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.12 }}
+            >
+              <Image
+                src="/images/homapage3.png"
+                alt="College Programs"
+                fill
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-7">
+                <span className="text-green-400 text-[11px] font-semibold tracking-[0.2em] uppercase">Higher Education</span>
+                <h3 className="text-white text-2xl font-bold mt-1 mb-1">College Programs</h3>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-xs">
+                  Undergraduate and professional degree programs across five academic departments.
+                </p>
+                <span className="inline-flex items-center gap-2 text-white text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Explore <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </motion.div>
+          </Link>
+        </div>
+      </section>
+
+      {/* ━━━ College Programs Directory ━━━ */}
+      <section className="bg-gray-50 py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">College Programs</h2>
+              <div className="w-12 h-0.5 bg-green-600 mt-2 mb-3 rounded-full" />
+              <p className="text-gray-500 text-sm md:text-base max-w-lg">
+                Five departments offering career-focused undergraduate and professional degrees.
+              </p>
+            </div>
+            <Link
+              href="/academics/college-programs"
+              className="inline-flex items-center gap-2 text-green-700 text-sm font-semibold hover:gap-3 transition-all shrink-0"
+            >
+              View all programs <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {collegeDepartments.map((dept, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 border-l-green-500"
+                custom={idx}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{item.stream}</h3>
-                <p className="text-sm text-gray-600">{item.courses}</p>
+                <h3 className="text-base font-bold text-gray-900 mb-3 leading-snug">{dept.title}</h3>
+                <ul className="space-y-2">
+                  {dept.courses.map((course, cIdx) => (
+                    <li key={cIdx} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                      {course}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        {/* College Program */}
-        <motion.section 
-          className="mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2 }}
-        >
-          <motion.div 
-            className="mb-12"
-            variants={fadeInUp}
+      {/* ━━━ Basic Education Directory ━━━ */}
+      <section className="py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <motion.div
+            className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">College Programs</h2>
-            <p className="text-lg text-gray-600">Advanced undergraduate education across multiple disciplines</p>
-          </motion.div>
-
-          {/* Science Stream */}
-          <motion.div className="mb-16" variants={staggerContainer}>
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="text-3xl">🔬</span>
-              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Science Stream</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {['Physics', 'Chemistry', 'Biology'].map((course, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
-                  variants={staggerItem}
-                  whileHover={{ y: -10 }}
-                >
-                  <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Image
-                      src={`/images/college-science-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
-                    <p className="text-gray-600 mb-4">
-                      Comprehensive study of fundamental principles and practical applications.
-                    </p>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>✓ Laboratory practicals</li>
-                      <li>✓ Research projects</li>
-                      <li>✓ Field experiments</li>
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Basic Education</h2>
+              <div className="w-12 h-0.5 bg-green-600 mt-2 mb-3 rounded-full" />
+              <p className="text-gray-500 text-sm md:text-base max-w-lg">
+                Quality K-12 programs building strong foundations rooted in Savian values.
+              </p>
             </div>
+            <Link
+              href="/academics/basic-education"
+              className="inline-flex items-center gap-2 text-green-700 text-sm font-semibold hover:gap-3 transition-all shrink-0"
+            >
+              View all programs <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
 
-          {/* Commerce Stream */}
-          <motion.div className="mb-16" variants={staggerContainer}>
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="text-3xl">💼</span>
-              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Commerce Stream</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {['Accountancy & Finance', 'Business Studies', 'Economics'].map((course, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
-                  variants={staggerItem}
-                  whileHover={{ y: -10 }}
-                >
-                  <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Image
-                      src={`/images/college-commerce-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
-                    <p className="text-gray-600 mb-4">
-                      Professional education focused on business, finance, and economic principles.
-                    </p>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>✓ Case studies</li>
-                      <li>✓ Internship programs</li>
-                      <li>✓ Industry exposure</li>
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Arts Stream */}
-          <motion.div className="mb-16" variants={staggerContainer}>
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="text-3xl">📚</span>
-              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Arts Stream</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {['English & Literature', 'History & Geography', 'Philosophy & Psychology'].map((course, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
-                  variants={staggerItem}
-                  whileHover={{ y: -10 }}
-                >
-                  <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Image
-                      src={`/images/college-arts-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
-                    <p className="text-gray-600 mb-4">
-                      Liberal arts education fostering critical thinking and cultural awareness.
-                    </p>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>✓ Research & analysis</li>
-                      <li>✓ Seminars</li>
-                      <li>✓ Cultural programs</li>
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Vocational Stream */}
-          <motion.div variants={staggerContainer}>
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <span className="text-3xl">🛠️</span>
-              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Vocational Courses</span>
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {['IT & Software Development', 'Digital Marketing', 'Healthcare & Nursing'].map((course, idx) => (
-                <motion.div 
-                  key={idx} 
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all cursor-pointer"
-                  variants={staggerItem}
-                  whileHover={{ y: -10 }}
-                >
-                  <motion.div 
-                    className="bg-gray-300 overflow-hidden aspect-video flex items-center justify-center"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <Image
-                      src={`/images/college-vocational-${idx + 1}.jpg`}
-                      alt={`${course} Student`}
-                      width={400}
-                      height={240}
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{course}</h4>
-                    <p className="text-gray-600 mb-4">
-                      Skill-based programs preparing students for professional careers.
-                    </p>
-                    <ul className="text-sm text-gray-700 space-y-1">
-                      <li>✓ Industry certification</li>
-                      <li>✓ Hands-on training</li>
-                      <li>✓ Placement support</li>
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* Senior High School */}
-        <motion.section 
-          className="mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2 }}
-        >
-          <motion.div className="mb-12" variants={fadeInUp}>
-            <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Senior High School</h2>
-            <p className="text-lg text-gray-600">Grade 11-12 education bridging secondary and tertiary levels</p>
-          </motion.div>
-
-          <motion.div 
-            className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100"
-            whileHover={{ boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)' }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8">
-              <motion.div 
-                className="bg-gray-300 rounded-lg overflow-hidden aspect-square flex items-center justify-center"
-                variants={slideInLeft}
-                whileHover={{ scale: 1.02 }}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {basicEdPrograms.map((prog, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border-l-4 border-l-green-500"
+                custom={idx}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
-                <Image
-                  src="/images/senior-high-students.jpg"
-                  alt="Senior High Students"
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-              <motion.div variants={slideInRight}>
-                <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Our Programs</h3>
-                <div className="space-y-4">
-                  {[
-                    { stream: 'Academic Track', desc: 'Preparation for college entrance exams and advanced studies' },
-                    { stream: 'Science Specialization', desc: 'Enhanced focus on STEM subjects with laboratory work' },
-                    { stream: 'Social Science Track', desc: 'Emphasis on humanities and social sciences' },
-                    { stream: 'Technical Electives', desc: 'Introduction to vocational and technical skills' }
-                  ].map((prog, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className="border-l-4 border-green-600 pl-4 hover:pl-6 transition-all cursor-pointer"
-                      variants={staggerItem}
-                      whileHover={{ x: 5 }}
-                    >
-                      <h4 className="font-bold text-gray-800 mb-1">{prog.stream}</h4>
-                      <p className="text-gray-600 text-sm">{prog.desc}</p>
-                    </motion.div>
+                <h3 className="text-base font-bold text-gray-900 mb-3 leading-snug">{prog.title}</h3>
+                <ul className="space-y-2">
+                  {prog.courses.map((course, cIdx) => (
+                    <li key={cIdx} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" />
+                      {course}
+                    </li>
                   ))}
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* Junior High School */}
-        <motion.section 
-          className="mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2 }}
-        >
-          <motion.div className="mb-12" variants={fadeInUp}>
-            <h2 className="text-4xl font-bold mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Junior High School</h2>
-            <p className="text-lg text-gray-600">Grade 7-10 foundational education fostering all-round development</p>
-          </motion.div>
-
-          <motion.div 
-            className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl shadow-lg overflow-hidden border border-green-200"
-            whileHover={{ boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)' }}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8">
-              <motion.div variants={slideInLeft}>
-                <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Comprehensive Curriculum</h3>
-                <div className="space-y-4">
-                  {[
-                    { subject: 'Core Academics', desc: 'English, Mathematics, Science, Social Studies' },
-                    { subject: 'Languages', desc: 'Multilingual education and communication skills' },
-                    { subject: 'Physical Education', desc: 'Sports and fitness for healthy development' },
-                    { subject: 'Arts & Crafts', desc: 'Creative expression and practical skills' },
-                    { subject: 'Digital Literacy', desc: 'Technology and computer education' },
-                    { subject: 'Life Skills', desc: 'Character building and personal development' }
-                  ].map((item, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className="bg-white p-3 rounded-lg border-l-4 border-green-600 hover:shadow-md transition-all cursor-pointer"
-                      variants={staggerItem}
-                      whileHover={{ x: 5, boxShadow: '0 4px 12px rgba(42,157,95,0.1)' }}
-                    >
-                      <h4 className="font-bold text-gray-800 mb-1">{item.subject}</h4>
-                      <p className="text-gray-600 text-sm">{item.desc}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-              <motion.div 
-                className="bg-gray-300 rounded-lg overflow-hidden aspect-square flex items-center justify-center"
-                variants={slideInRight}
-                whileHover={{ scale: 1.02 }}
-              >
-                <Image
-                  src="/images/junior-high-students.jpg"
-                  alt="Junior High Students"
-                  width={500}
-                  height={500}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.section>
-
-        {/* Learning Features */}
-        <motion.section 
-          className="mb-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2 }}
-        >
-          <motion.h2 
-            className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent"
-            variants={fadeInUp}
-          >
-            Learning Features & Resources
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: 'Digital Learning', emoji: '🖥️', desc: 'Online classrooms & e-learning platforms' },
-              { title: 'Expert Faculty', emoji: '👨‍🏫', desc: 'Highly qualified teachers with experience' },
-              { title: 'Modern Labs', emoji: '🔬', desc: 'Well-equipped science & computer labs' },
-              { title: 'Library Resources', emoji: '📚', desc: '10,000+ books and digital resources' },
-              { title: 'Sports Facilities', emoji: '⚽', desc: 'Comprehensive athletic programs' },
-              { title: 'Arts Studio', emoji: '🎨', desc: 'Creative spaces for artistic expression' },
-              { title: 'Mentorship Program', emoji: '🤝', desc: 'Personalized guidance & counseling' },
-              { title: 'International Exposure', emoji: '🌍', desc: 'Exchange programs & global partnerships' }
-            ].map((feature, idx) => (
-              <motion.div 
-                key={idx} 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-2xl transition-all text-center hover:bg-gradient-to-b hover:from-green-50 hover:to-white cursor-pointer border-t-4 border-transparent hover:border-green-600"
-                variants={staggerItem}
-                whileHover={{ y: -10 }}
-              >
-                <motion.div 
-                  className="text-4xl mb-3"
-                  whileHover={{ scale: 1.2, rotate: 10 }}
-                >
-                  {feature.emoji}
-                </motion.div>
-                <h3 className="font-bold text-lg mb-2 bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.desc}</p>
+                </ul>
               </motion.div>
             ))}
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        {/* Call to Action */}
-        <motion.section 
-          className="bg-gradient-to-r from-green-600 via-green-600 to-emerald-600 rounded-xl p-12 text-white text-center shadow-lg"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 2 }}
-          whileHover={{ boxShadow: '0 30px 60px rgba(42,157,95,0.3)' }}
-        >
-          <motion.h2 
-            className="text-3xl font-bold mb-4"
-            variants={fadeInUp}
-          >
-            Start Your Educational Journey
-          </motion.h2>
-          <motion.p 
-            className="text-lg mb-8 text-green-100"
-            variants={staggerItem}
-          >
-            Join St. Dominic Savio College and experience transformative education that prepares you for success.
-          </motion.p>
-          <motion.button 
-            className="bg-white text-green-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors shadow-md"
-            whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)' }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Learn More & Enroll
-          </motion.button>
-        </motion.section>
-      </div>
+      {/* ━━━ Footer ━━━ */}
+      <footer className="bg-gray-900 text-white py-14 px-4 border-t-4 border-green-600">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-4 text-green-400">About Us</h3>
+            <p className="text-gray-400">St. Dominic Savio College is committed to providing quality education and holistic development of students since 2001.</p>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4 text-green-400">Quick Links</h3>
+            <ul className="text-gray-400 space-y-2">
+              <li><a href="/academics" className="hover:text-white transition">Academics</a></li>
+              <li><a href="/admission" className="hover:text-white transition">Admission</a></li>
+              <li><a href="/events" className="hover:text-white transition">Events</a></li>
+              <li><a href="/contact" className="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4 text-green-400">Follow Us</h3>
+            <ul className="text-gray-400 space-y-2">
+              <li><a href="#" className="hover:text-white transition">Facebook</a></li>
+              <li><a href="#" className="hover:text-white transition">Instagram</a></li>
+              <li><a href="#" className="hover:text-white transition">Twitter</a></li>
+              <li><a href="#" className="hover:text-white transition">LinkedIn</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4 text-green-400">Contact Info</h3>
+            <p className="text-gray-400 mb-2">📧 info@sdsc.edu</p>
+            <p className="text-gray-400 mb-2">📞 +1 (555) 123-4567</p>
+            <p className="text-gray-400">🕐 Mon-Fri: 9AM-5PM</p>
+          </div>
+        </div>
+        <div className="border-t border-gray-700 pt-8 text-center text-gray-400">
+          <p>&copy; 2026 St. Dominic Savio College. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
