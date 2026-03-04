@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-/* --- Animation --- */
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+const fade = {
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -17,8 +16,8 @@ export default function College() {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* Hero */}
-      <section className="relative h-[420px] md:h-[480px] overflow-hidden">
+      {/* ── Hero ── */}
+      <section className="relative h-[440px] md:h-[500px] overflow-hidden">
         <Image
           src="/images/background.png"
           alt="SDSC Campus"
@@ -51,14 +50,14 @@ export default function College() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            33 years of excellence in holistic education \u2014 nurturing leaders with
-            passion, compassion, integrity, and purpose.
+            33 years of excellence in holistic education &mdash; nurturing leaders
+            with passion, compassion, integrity, and purpose.
           </motion.p>
         </div>
       </section>
 
-      {/* President Message */}
-      <section className="py-20">
+      {/* ── President&rsquo;s Message ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -67,7 +66,9 @@ export default function College() {
             transition={{ duration: 0.5 }}
             className="mb-10"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Message of the President</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Message of the President
+            </h2>
             <div className="w-12 h-0.5 bg-green-600 mt-2 rounded-full" />
           </motion.div>
 
@@ -91,24 +92,27 @@ export default function College() {
             </motion.div>
 
             <motion.div
-              className="flex-1"
+              className="flex-1 space-y-4"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="bg-green-50/60 rounded-2xl p-6 md:p-8">
+              <div className="bg-green-50/60 rounded-2xl p-6 md:p-8 border border-green-100">
                 <p className="text-gray-700 text-[15px] leading-relaxed mb-4 text-justify">
                   In celebration of the 33rd Foundation Anniversary of St. Dominic Savio College, we honor a remarkable journey marked by excellence, dedication, and unwavering commitment to quality education. Guided by the inspiring leadership of Dr. Nestor V. Dela Cruz, this year&apos;s theme, &ldquo;SDSC 33 Years of Excellence: Past, Present and Future,&rdquo; reminds us to reflect on our proud heritage while boldly embracing the opportunities ahead.
                 </p>
                 <p className="text-gray-700 text-[15px] leading-relaxed mb-4 text-justify">
-                  For more than three decades, SDSC has remained steadfast in its mission of the Total Development of a Person \u2014 forming individuals who are not only academically competent but also morally grounded and spiritually enriched. True to the guiding principle, &ldquo;Our Graduates, Our Difference,&rdquo; the institution continues to shape Savian scholars who embody excellence in all aspects of life.
+                  For more than three decades, SDSC has remained steadfast in its mission of the Total Development of a Person &mdash; forming individuals who are not only academically competent but also morally grounded and spiritually enriched. True to the guiding principle, &ldquo;Our Graduates, Our Difference,&rdquo; the institution continues to shape Savian scholars who embody excellence in all aspects of life.
                 </p>
                 <p className="text-gray-700 text-[15px] leading-relaxed mb-4 text-justify">
                   At the heart of this mission are the Savian Core Values: passion, compassion, integrity, and excellence. As SDSC moves forward into a &ldquo;Bagong Savio&rdquo; era, we renew our commitment to resilience, innovation, and forward-thinking leadership.
                 </p>
+                <p className="text-gray-700 text-[15px] leading-relaxed mb-4 text-justify">
+                  This celebration underscores the unity of the Savian community. The coming together of the Main Campus and Ibaan Branch as one Savian family reflects the spirit of collaboration and shared purpose that has sustained SDSC through the years.
+                </p>
                 <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
-                  With gratitude for the past, confidence in the present, and hope for the future, we proudly celebrate 33 Years of Excellence \u2014 and many more to come.
+                  With gratitude for the past, confidence in the present, and hope for the future, we proudly celebrate 33 Years of Excellence &mdash; and many more to come.
                 </p>
               </div>
             </motion.div>
@@ -116,8 +120,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* History */}
-      <section className="bg-gray-50 py-20">
+      {/* ── History ── */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -150,28 +154,31 @@ export default function College() {
             </motion.div>
 
             <motion.div
-              className="flex-1"
+              className="flex-1 space-y-4"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <p className="text-gray-700 text-[15px] leading-relaxed mb-4 text-justify">
-                It started out as a dream. Through the great efforts of Dr. Nestor V. dela Cruz and his wife Mrs. Myra R. dela Cruz, in February 1993, St. Dominic Savio College was born \u2014 first known as St. Dominic Savio School, catering only to grade school and high school levels.
-              </p>
-              <p className="text-gray-700 text-[15px] leading-relaxed mb-4 text-justify">
-                Housed in a modest two-storey residential house, SDSC welcomed twenty-three students in the pre-school and grade school programs. The enrollment doubled in its second year, and the High School Department opened as a result of great community support.
+              <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
+                It started out as a dream. Through the great efforts of Dr. Nestor V. dela Cruz and his wife Mrs. Myra R. dela Cruz, in February 1993, St. Dominic Savio College was born &mdash; first known as St. Dominic Savio School, catering only to grade school and high school levels.
               </p>
               <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
-                On June 1995, St. Dominic Savio School was renamed to St. Dominic Savio College \u2014 signifying its strong commitment to making quality education accessible to all and its entry into the realms of higher education. Today, SDSC continues its noble mission of producing students who embody its vision of Total Development of a Person.
+                Armed with its vision&ndash;mission of Total Development of a Person, SDSC opened its doors to students from all walks of life. Housed in a modest two-storey residential house, SDSC welcomed twenty-three students in the pre-school and grade school programs.
+              </p>
+              <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
+                The enrollment doubled in its second year, the High School Department opened, and the Pre-School and Elementary Department were given recognition by DECS. A five-storey building was constructed to accommodate the growing enrollees.
+              </p>
+              <p className="text-gray-700 text-[15px] leading-relaxed text-justify">
+                On June 1995, St. Dominic Savio School was renamed to St. Dominic Savio College &mdash; signifying its strong commitment to making quality education accessible to all and its entry into higher education. Today, SDSC continues its noble mission of producing students who embody its vision.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Vision and Mission */}
-      <section className="py-20">
+      {/* ── Vision & Mission ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -188,7 +195,7 @@ export default function College() {
             <motion.div
               className="bg-green-50/70 rounded-2xl p-8 border border-green-100"
               custom={0}
-              variants={fadeUp}
+              variants={fade}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -201,7 +208,7 @@ export default function College() {
             <motion.div
               className="bg-emerald-50/70 rounded-2xl p-8 border border-emerald-100"
               custom={1}
-              variants={fadeUp}
+              variants={fade}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -215,8 +222,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* General Goals */}
-      <section className="bg-gray-50 py-20">
+      {/* ── General Goals ── */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -235,21 +242,21 @@ export default function College() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: 'Total Human Persons', desc: 'Produce Total Human Persons with knowledge and understanding of dynamic Christian Living \u2014 encouraging honesty, responsibility, and chivalry.' },
-              { title: 'Fine Tastes and Values', desc: 'Develop students with fine tastes and manners, strengthening their commitment to preserving Filipino tradition and values.' },
+              { title: 'Fine Tastes & Values', desc: 'Develop students with fine tastes and manners, strengthening their commitment to preserving Filipino tradition and values.' },
               { title: 'Academic Excellence', desc: 'Excel in developing academic competence, recognizing and appreciating the values of arts and science for individual progress.' },
               { title: 'Higher Learning', desc: 'Manifest preparedness for higher-level learning through a balanced instructional program for mastery of fundamental knowledge and skills.' },
               { title: 'Global Competitiveness', desc: 'Develop leadership potentials among individuals who are vocationally and academically efficient, contributing to nation building.' },
             ].map((goal, idx) => (
               <motion.div
                 key={idx}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
                 custom={idx}
-                variants={fadeUp}
+                variants={fade}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center mb-4">
+                <div className="w-9 h-9 rounded-lg bg-green-100 flex items-center justify-center mb-4">
                   <span className="text-green-700 font-bold text-sm">{idx + 1}</span>
                 </div>
                 <h3 className="text-base font-bold text-gray-900 mb-2">{goal.title}</h3>
@@ -260,8 +267,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* Educational Philosophy */}
-      <section className="py-20">
+      {/* ── Educational Philosophy ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -273,26 +280,26 @@ export default function College() {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Educational Philosophy</h2>
             <div className="w-12 h-0.5 bg-green-600 mt-3 mx-auto rounded-full" />
             <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto mt-4">
-              Exemplified in the motto of St. Dominic Savio \u2014 <span className="font-semibold text-gray-700">Caritas, Ductus, and Servitum</span>.
+              Exemplified in the motto of St. Dominic Savio &mdash; <span className="font-semibold text-gray-700">Caritas, Ductus, and Servitum</span>.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { latin: 'Caritas', english: 'Love', color: 'bg-rose-50 border-rose-100', badge: 'bg-rose-100 text-rose-700', desc: 'Love is the greatest Christian virtue and the foundation of faith. The institution believes that education without values is mere learning \u2014 knowledge and skills must be imbued with values formation.' },
-              { latin: 'Ductus', english: 'Leadership', color: 'bg-blue-50 border-blue-100', badge: 'bg-blue-100 text-blue-700', desc: 'St. Dominic Savio is the shining example of the youth. His leadership capabilities, full of zeal and fidelity to duty, are the ingredients of total human development.' },
+              { latin: 'Ductus', english: 'Leadership', color: 'bg-sky-50 border-sky-100', badge: 'bg-sky-100 text-sky-700', desc: 'St. Dominic Savio is the shining example of the youth. His leadership capabilities, full of zeal and fidelity to duty, are the ingredients of total human development.' },
               { latin: 'Servitum', english: 'Service', color: 'bg-amber-50 border-amber-100', badge: 'bg-amber-100 text-amber-700', desc: 'The unselfish dedication in the service of mankind is the hallmark of the educational philosophy to be instilled in the minds of every student.' },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                className={"rounded-2xl p-7 border " + item.color + " hover:shadow-md transition-all duration-300"}
+                className={item.color + " rounded-2xl p-7 border hover:shadow-md transition-all duration-300"}
                 custom={idx}
-                variants={fadeUp}
+                variants={fade}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <span className={"inline-block text-xs font-semibold px-3 py-1 rounded-full " + item.badge + " mb-4"}>
+                <span className={item.badge + " inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"}>
                   {item.english}
                 </span>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">{item.latin}</h3>
@@ -303,8 +310,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* Core Values */}
-      <section className="bg-gray-50 py-20">
+      {/* ── Core Values ── */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -328,7 +335,7 @@ export default function College() {
                 key={idx}
                 className={item.color + " rounded-2xl border p-6 text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300"}
                 custom={idx}
-                variants={fadeUp}
+                variants={fade}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -341,8 +348,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* Symbols */}
-      <section className="py-20">
+      {/* ── Symbols ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -365,12 +372,12 @@ export default function College() {
                 key={idx}
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 custom={idx}
-                variants={fadeUp}
+                variants={fade}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <div className="aspect-square bg-gray-100 overflow-hidden">
+                <div className="aspect-square bg-gray-50 overflow-hidden">
                   <Image
                     src={"/images/" + item.image}
                     alt={item.symbol}
@@ -389,8 +396,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* Hymn */}
-      <section className="bg-green-50/60 py-20">
+      {/* ── Hymn ── */}
+      <section className="py-20 bg-green-50/60">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -408,8 +415,8 @@ export default function College() {
         </div>
       </section>
 
-      {/* Prayer */}
-      <section className="py-20">
+      {/* ── Prayer ── */}
+      <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -436,13 +443,13 @@ export default function College() {
               Help us to pursue excellence in all we do, to serve with humble hearts, and to grow in knowledge and faith.
             </p>
             <p className="text-gray-700 text-base leading-relaxed italic">
-              May we embrace the values you embodied \u2014 goodness, integrity, and pastoral care \u2014 and become beacons of hope in our communities. Amen.
+              May we embrace the values you embodied &mdash; goodness, integrity, and pastoral care &mdash; and become beacons of hope in our communities. Amen.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* ── Footer ── */}
       <footer className="bg-gray-900 text-white py-14 px-4 border-t-4 border-green-600">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
