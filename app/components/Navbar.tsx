@@ -4,14 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 
-const collegeLinks = [
-  { name: 'Message of the President', href: '/college#president' },
-  { name: 'SDSC History', href: '/college#history' },
-  { name: 'Vision & Mission', href: '/college#vision-mission' },
-  { name: 'General Goals', href: '/college#general-goals' },
-  { name: 'Educational Philosophy', href: '/college#educational-philosophy' },
-  { name: 'Core Values & Symbols', href: '/college#core-values' },
-  { name: 'SDSC Hymn & Prayer', href: '/college#hymn' },
+const academicsSubItems = [
+  { name: 'Overview', href: '/academics' },
+  { name: 'Basic Education', href: '/academics/basic-education' },
+  { name: 'College Programs', href: '/academics/college-programs' },
 ];
 
 const academicsSubItems = [
@@ -21,6 +17,7 @@ const academicsSubItems = [
 ];
 
 const extraNavItems = [
+const navItems = [
   { name: 'Administration', href: '/administration' },
   { name: 'Campus Life', href: '/campus-life' },
   { name: 'Contact Us', href: '/contact' },
@@ -43,10 +40,13 @@ export default function Navbar() {
   const closeCollegeDropdown = () => {
     closeTimer.current = setTimeout(() => setCollegeOpen(false), 150);
   };
+  const [academicsOpen, setAcademicsOpen] = useState(false);
+  const [mobileAcademicsOpen, setMobileAcademicsOpen] = useState(false);
+  const academicsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (academicsRef.current && !academicsRef.current.contains(event.target as Node)) {
         setAcademicsOpen(false);
       }
     }
@@ -95,26 +95,39 @@ export default function Navbar() {
               <Link
                 href="/college"
                 className="flex items-center gap-1 px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap"
+            <Link href="/college" className="px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap">
+              The College
+            </Link>
+
+            {/* Academics dropdown */}
+            <div className="relative" ref={academicsRef}>
+              <button
+                className="px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap inline-flex items-center gap-1"
+                onClick={() => setAcademicsOpen(!academicsOpen)}
+                onMouseEnter={() => setAcademicsOpen(true)}
               >
-                The College
-                <svg className="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                Academics
+                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${academicsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </Link>
-              {collegeOpen && (
+              </button>
+              {academicsOpen && (
                 <div
                   className="absolute top-full left-0 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50"
                   onMouseEnter={openCollegeDropdown}
                   onMouseLeave={closeCollegeDropdown}
+                  className="absolute top-full left-0 mt-1 w-52 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50"
+                  onMouseEnter={() => setAcademicsOpen(true)}
+                  onMouseLeave={() => setAcademicsOpen(false)}
                 >
-                  {collegeLinks.map((link) => (
+                  {academicsSubItems.map((subItem) => (
                     <Link
-                      key={link.href}
-                      href={link.href}
+                      key={subItem.href}
+                      href={subItem.href}
                       className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
-                      onClick={() => setCollegeOpen(false)}
+                      onClick={() => setAcademicsOpen(false)}
                     >
-                      {link.name}
+                      {subItem.name}
                     </Link>
                   ))}
                 </div>
@@ -155,6 +168,8 @@ export default function Navbar() {
 
             {/* Other nav items */}
             {extraNavItems.map((item) => (
+            {/* Remaining nav items */}
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -193,9 +208,14 @@ export default function Navbar() {
             </Link>
 
             {/* The College mobile dropdown */}
+            <Link href="/college" className="block px-4 py-3 rounded transition-colors text-sm font-medium hover:bg-green-100" style={{ color: '#2a9d5f' }} onClick={() => setIsOpen(false)}>
+              The College
+            </Link>
+
+            {/* Mobile Academics dropdown */}
             <div>
               <button
-                className="w-full text-left flex items-center justify-between px-4 py-3 text-sm font-medium hover:bg-green-100"
+                className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium hover:bg-green-100 transition-colors"
                 style={{ color: '#2a9d5f' }}
                 onClick={() => setMobileCollegeOpen(!mobileCollegeOpen)}
               >
@@ -212,8 +232,23 @@ export default function Navbar() {
                       href={link.href}
                       className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 hover:text-green-700 transition-colors"
                       onClick={() => { setIsOpen(false); setMobileCollegeOpen(false); }}
+                onClick={() => setMobileAcademicsOpen(!mobileAcademicsOpen)}
+              >
+                Academics
+                <svg className={`w-4 h-4 transition-transform duration-200 ${mobileAcademicsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {mobileAcademicsOpen && (
+                <div className="bg-green-50/50 border-l-4 border-green-500 ml-4">
+                  {academicsSubItems.map((subItem) => (
+                    <Link
+                      key={subItem.href}
+                      href={subItem.href}
+                      className="block px-6 py-2.5 text-sm font-medium text-green-700 hover:bg-green-100 transition-colors"
+                      onClick={() => { setIsOpen(false); setMobileAcademicsOpen(false); }}
                     >
-                      {link.name}
+                      {subItem.name}
                     </Link>
                   ))}
                 </div>
@@ -250,6 +285,8 @@ export default function Navbar() {
 
             {/* Other mobile nav items */}
             {extraNavItems.map((item) => (
+            {/* Remaining mobile nav items */}
+            {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
