@@ -18,7 +18,7 @@ const slides = [
   {
     src: '/images/background.png',
     caption: 'Our Graduates, Our Difference',
-    sub: 'Producing leaders, innovators, and responsible citizens since 2001',
+    sub: 'Producing leaders, innovators, and responsible citizens since 1993',
     position: 'center center',
   },
 ];

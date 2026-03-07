@@ -139,7 +139,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <motion.div variants={staggerItem}>
             <h3 className="text-xl font-semibold mb-4 text-green-400">About Us</h3>
-            <p className="text-gray-400">St. Dominic Savio College is committed to providing quality education and holistic development of students since 2001.</p>
+            <p className="text-gray-400">St. Dominic Savio College is committed to providing quality education and holistic development of students since 1993.</p>
           </motion.div>
           <motion.div variants={staggerItem}>
             <h3 className="text-xl font-semibold mb-4 text-green-400">Quick Links</h3>
