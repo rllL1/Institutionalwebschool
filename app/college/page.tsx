@@ -6,7 +6,49 @@ import { motion } from 'framer-motion';
 export default function College() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 pt-4 pb-20 space-y-6">
+
+      {/* ━━━ Hero ━━━ */}
+      <section className="relative h-[520px] md:h-[560px] overflow-hidden">
+        <Image
+          src="/images/doc_speech.jpg"
+          alt="The College"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-green-950/40 via-black/55 to-black/75" />
+
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+          <motion.p
+            className="text-green-300 text-xs font-semibold tracking-[0.25em] uppercase mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            St. Dominic Savio College — Ibaan
+          </motion.p>
+          <motion.h1
+            className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            The College
+          </motion.h1>
+          <motion.p
+            className="text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Rooted in faith, driven by excellence — learn about our history, vision, and the values
+            that shape St. Dominic Savio College.
+          </motion.p>
+        </div>
+      </section>
+
+      <div className="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-6">
 
         {/* ── President's Message ── */}
         <motion.div
@@ -280,25 +322,12 @@ export default function College() {
                 </div>
                 <div className="space-y-1 font-semibold not-italic text-green-700">
                   <p>Amen.</p>
-          
-          <div className="mb-6">
-            <motion.div 
-              className="float-right w-full md:w-96 ml-6 mb-4"
-              variants={slideInRight}
-            >
-              <div className="relative rounded-xl overflow-hidden shadow-2xl h-96">
-                <div className="bg-gray-300 rounded-lg overflow-hidden w-full h-full flex items-center justify-center">
-                  <div className="flex flex-col items-center justify-center text-gray-500">
-                    <span className="text-6xl mb-4">🙏</span>
-                    <span className="text-lg font-semibold">St. Dominic Savio</span>
-                  </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
         </div>
-
       </div>
     </div>
   );
