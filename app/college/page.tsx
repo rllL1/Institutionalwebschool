@@ -57,49 +57,6 @@ export default function College() {
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-6">
-    <div className="min-h-screen bg-white">
-
-      {/* ── Hero ── */}
-      <section className="relative h-[440px] md:h-[500px] overflow-hidden">
-        <Image
-          src="/images/background.png"
-          alt="SDSC Campus"
-          fill
-          className="object-cover"
-          priority
-          quality={85}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-green-950/40 via-black/55 to-black/75" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-          <motion.p
-            className="text-green-300 text-xs font-semibold tracking-[0.25em] uppercase mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            St. Dominic Savio College
-          </motion.p>
-          <motion.h1
-            className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-          >
-            About the College
-          </motion.h1>
-          <motion.p
-            className="text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            33 years of excellence in holistic education &mdash; nurturing leaders
-            with passion, compassion, integrity, and purpose.
-          </motion.p>
-        </div>
-      </section>
-
       {/* ── President&rsquo;s Message ── */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -490,29 +447,8 @@ export default function College() {
                 </div>
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Prayer to St. Dominic Savio</h2>
-            <div className="w-12 h-0.5 bg-green-600 mt-2 rounded-full" />
-          </motion.div>
-
-          <motion.div
-            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <p className="text-gray-700 text-base leading-relaxed italic mb-4">
-              Saint Dominic Savio, young in years but rich in virtue, guide our steps along the path of righteousness.
-            </p>
-            <p className="text-gray-700 text-base leading-relaxed italic mb-4">
-              Help us to pursue excellence in all we do, to serve with humble hearts, and to grow in knowledge and faith.
-            </p>
-            <p className="text-gray-700 text-base leading-relaxed italic">
-              May we embrace the values you embodied &mdash; goodness, integrity, and pastoral care &mdash; and become beacons of hope in our communities. Amen.
-            </p>
           </motion.div>
         </div>
-      </div>
       </section>
 
       {/* ── Footer ── */}
