@@ -19,8 +19,8 @@ export default function EventsCarousel() {
   const canNext = start + VISIBLE < events.length;
 
   return (
-    <section className="py-16 px-4 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="px-1 py-8 md:px-2">
+      <div className="mx-auto max-w-[100rem] rounded-[2rem] bg-white/92 px-4 py-7 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-sm md:px-5 lg:px-6">
         <h2 className="text-4xl font-bold mb-10" style={{ color: '#2a9d5f' }}>Life at SDSC</h2>
 
         <div className="relative flex items-center gap-4">
