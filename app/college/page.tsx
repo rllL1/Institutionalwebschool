@@ -117,12 +117,7 @@ export default function College() {
         </button>
       </section>
 
-<<<<<<< HEAD
       <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
-=======
-      <div className="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-6">
-    <div className="min-h-screen bg-white">
->>>>>>> 0c1c50c675550aa6ba0be30757f1ba20cae56335
 
       {/* ── Hero ── */}
       <section className="relative h-[440px] md:h-[500px] overflow-hidden">
@@ -164,6 +159,8 @@ export default function College() {
         </div>
       </section>
 
+=======
+>>>>>>> main
       {/* ── President&rsquo;s Message ── */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -554,29 +551,8 @@ export default function College() {
                 </div>
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Prayer to St. Dominic Savio</h2>
-            <div className="w-12 h-0.5 bg-green-600 mt-2 rounded-full" />
-          </motion.div>
-
-          <motion.div
-            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <p className="text-gray-700 text-base leading-relaxed italic mb-4">
-              Saint Dominic Savio, young in years but rich in virtue, guide our steps along the path of righteousness.
-            </p>
-            <p className="text-gray-700 text-base leading-relaxed italic mb-4">
-              Help us to pursue excellence in all we do, to serve with humble hearts, and to grow in knowledge and faith.
-            </p>
-            <p className="text-gray-700 text-base leading-relaxed italic">
-              May we embrace the values you embodied &mdash; goodness, integrity, and pastoral care &mdash; and become beacons of hope in our communities. Amen.
-            </p>
           </motion.div>
         </div>
-      </div>
       </section>
 
       {/* ── Footer ── */}
