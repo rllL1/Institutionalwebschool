@@ -49,18 +49,84 @@ export default function College() {
   }, [overviewSlides.length]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gray-50">
+      <section className="relative w-full overflow-hidden" style={{ height: '600px' }}>
+        {overviewSlides.map((slide, index) => (
+          <div
+            key={slide.src}
+            className="absolute inset-0 transition-opacity duration-1000"
+            style={{ opacity: index === currentSlide ? 1 : 0 }}
+          >
+            <Image
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: slide.position }}
+            />
+            <div className="absolute inset-0 bg-black/45" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
 
-      {/* ━━━ Hero ━━━ */}
-      <section className="relative h-[520px] md:h-[560px] overflow-hidden">
-        <Image
-          src="/images/doc_speech.jpg"
-          alt="The College"
-          fill
-          className="object-cover"
-          priority
-          quality={85}
-        />
+            <div className="absolute inset-0 flex items-center px-8 md:px-20 lg:px-24">
+              <div className="max-w-3xl text-white">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-emerald-300">
+                  St. Dominic Savio College
+                </p>
+                <h1 className="mb-6 text-4xl font-bold leading-tight drop-shadow-lg md:text-6xl">
+                  {slide.title}
+                </h1>
+                <p className="max-w-2xl text-lg leading-relaxed text-white/85 md:text-2xl">
+                  {slide.subtitle}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-3">
+          {overviewSlides.map((slide, index) => (
+            <button
+              key={slide.src}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className="h-3 w-3 rounded-full transition-all duration-300"
+              style={{
+                backgroundColor: index === currentSlide ? '#2a9d5f' : 'rgba(255,255,255,0.6)',
+                transform: index === currentSlide ? 'scale(1.25)' : 'scale(1)',
+              }}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + overviewSlides.length) % overviewSlides.length)}
+          aria-label="Previous slide"
+          className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-2xl text-white transition-all hover:bg-black/70"
+        >
+          ‹
+        </button>
+
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % overviewSlides.length)}
+          aria-label="Next slide"
+          className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-2xl text-white transition-all hover:bg-black/70"
+        >
+          ›
+        </button>
+      </section>
+
+{/* ── Hero ── */}
+<section className="relative h-[440px] md:h-[500px] overflow-hidden">
+  <Image
+    src="/images/doc_speech.jpg"
+    alt="The College"
+    fill
+    className="object-cover"
+    priority
+    quality={85}
+  />
         <div className="absolute inset-0 bg-gradient-to-b from-green-950/40 via-black/55 to-black/75" />
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
@@ -475,29 +541,28 @@ export default function College() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-10"
+            className="text-center mb-12"
           >
-            <div className="p-6 text-center">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Prayer to St. Dominic Savio</h2>
-            </div>
-            <div className="px-6 pb-8 border-t border-green-100">
-              <div className="pt-6 text-center space-y-6 text-base text-gray-700 leading-relaxed italic">
-                <div className="space-y-1">
-                  <p>ST. DOMINIC SAVIO who learned from the school of St. John Bosco,</p>
-                  <p>who grew in holiness, help us to follow you,</p>
-                  <p>in your love for Jesus and Mother Mary</p>
-                  <p>in your diligence and in fulfilling your duties.</p>
-                </div>
-                <div className="space-y-1">
-                  <p>Help us that we too,</p>
-                  <p>by resolving to die rather than offending God.</p>
-                  <p>May come at last to eternal joys of heaven.</p>
-                </div>
-                <div className="space-y-1 font-semibold not-italic text-green-700">
-                  <p>Amen.</p>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Prayer to St. Dominic Savio</h2>
+            <div className="w-12 h-0.5 bg-green-600 mt-3 mx-auto rounded-full" />
+          </motion.div>
+
+          <motion.div
+            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <p className="text-gray-700 text-base leading-relaxed italic mb-4">
+              Saint Dominic Savio, young in years but rich in virtue, guide our steps along the path of righteousness.
+            </p>
+            <p className="text-gray-700 text-base leading-relaxed italic mb-4">
+              Help us to pursue excellence in all we do, to serve with humble hearts, and to grow in knowledge and faith.
+            </p>
+            <p className="text-gray-700 text-base leading-relaxed italic">
+              May we embrace the values you embodied &mdash; goodness, integrity, and pastoral care &mdash; and become beacons of hope in our communities. Amen.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -541,3 +606,5 @@ export default function College() {
     </div>
   );
 }
+
+
