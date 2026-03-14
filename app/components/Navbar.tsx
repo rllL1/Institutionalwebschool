@@ -162,7 +162,7 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* The College mobile dropdown */}
+            {/* The College */}
             <Link href="/college" className="block px-4 py-3 rounded transition-colors text-sm font-medium hover:bg-green-100" style={{ color: '#2a9d5f' }} onClick={() => setIsOpen(false)}>
               The College
             </Link>

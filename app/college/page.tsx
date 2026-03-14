@@ -117,6 +117,11 @@ export default function College() {
         </button>
       </section>
 
+<<<<<<< HEAD
+=======
+      <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
+
+>>>>>>> 51e1579c62f6686d9d148bfab23d771fe30e89a7
       {/* ── Hero ── */}
       <section className="relative h-[440px] md:h-[500px] overflow-hidden">
         <Image
@@ -157,6 +162,8 @@ export default function College() {
         </div>
       </section>
 
+=======
+>>>>>>> main
       {/* ── President&rsquo;s Message ── */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -526,6 +533,7 @@ export default function College() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
+<<<<<<< HEAD
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Prayer to St. Dominic Savio</h2>
             <div className="w-12 h-0.5 bg-green-600 mt-3 mx-auto rounded-full" />
           </motion.div>
@@ -546,6 +554,29 @@ export default function College() {
             <p className="text-gray-700 text-base leading-relaxed italic">
               May we embrace the values you embodied &mdash; goodness, integrity, and pastoral care &mdash; and become beacons of hope in our communities. Amen.
             </p>
+=======
+            <div className="p-6 text-center">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Prayer to St. Dominic Savio</h2>
+            </div>
+            <div className="px-6 pb-8 border-t border-green-100">
+              <div className="pt-6 text-center space-y-6 text-base text-gray-700 leading-relaxed italic">
+                <div className="space-y-1">
+                  <p>ST. DOMINIC SAVIO who learned from the school of St. John Bosco,</p>
+                  <p>who grew in holiness, help us to follow you,</p>
+                  <p>in your love for Jesus and Mother Mary</p>
+                  <p>in your diligence and in fulfilling your duties.</p>
+                </div>
+                <div className="space-y-1">
+                  <p>Help us that we too,</p>
+                  <p>by resolving to die rather than offending God.</p>
+                  <p>May come at last to eternal joys of heaven.</p>
+                </div>
+                <div className="space-y-1 font-semibold not-italic text-green-700">
+                  <p>Amen.</p>
+                </div>
+              </div>
+            </div>
+>>>>>>> 51e1579c62f6686d9d148bfab23d771fe30e89a7
           </motion.div>
         </div>
       </section>
