@@ -1,0 +1,109 @@
+'use client';
+
+import { useState, useEffect, useCallback } from 'react';
+
+interface EventItem { src: string; title: string; date: string }
+
+interface Props {
+  content: Record<string, unknown>;
+}
+
+const VISIBLE = 4;
+
+export default function EventsCarouselSection({ content }: Props) {
+  const heading = (content.heading as string) || 'Life at SDSC';
+  const events = (content.events as EventItem[]) || [];
+  const [start, setStart] = useState(0);
+  const [modalImg, setModalImg] = useState<{ src: string; alt: string } | null>(null);
+
+  const closeModal = useCallback(() => setModalImg(null), []);
+
+  useEffect(() => {
+    if (!modalImg) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeModal(); };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey); };
+  }, [modalImg, closeModal]);
+
+  if (events.length === 0) return null;
+
+  const maxStart = Math.max(0, events.length - VISIBLE);
+  const canPrev = start > 0;
+  const canNext = start < maxStart;
+
+  return (
+    <section className="px-1 py-8 md:px-2">
+      <div className="mx-auto max-w-[100rem] rounded-[2rem] bg-white/92 px-4 py-7 shadow-[0_24px_80px_rgba(0,0,0,0.16)] backdrop-blur-sm md:px-5 lg:px-6">
+        <h2 className="text-4xl font-bold mb-10" style={{ color: '#2a9d5f' }}>{heading}</h2>
+
+        <div className="relative flex items-center gap-4">
+          <button
+            onClick={() => setStart((s) => Math.max(0, s - 1))}
+            disabled={!canPrev}
+            className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl transition-all"
+            style={{ backgroundColor: canPrev ? '#2a9d5f' : '#d1d5db', cursor: canPrev ? 'pointer' : 'not-allowed' }}
+          >
+            &#8249;
+          </button>
+
+          <div className="flex gap-6 flex-1 overflow-hidden">
+            {events.slice(start, start + VISIBLE).map((event, i) => (
+              <div
+                key={start + i}
+                className="flex-1 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-50 group"
+                style={{ minWidth: 0 }}
+              >
+                <div
+                  className="overflow-hidden cursor-pointer"
+                  style={{ height: '280px' }}
+                  onClick={() => setModalImg({ src: event.src, alt: event.title })}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={event.src} alt={event.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', transition: 'transform 0.3s ease' }}
+                    className="group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-gray-800 leading-snug mb-1">{event.title}</h3>
+                  <p className="text-sm font-medium" style={{ color: '#2a9d5f' }}>{event.date}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setStart((s) => Math.min(maxStart, s + 1))}
+            disabled={!canNext}
+            className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white text-2xl transition-all"
+            style={{ backgroundColor: canNext ? '#2a9d5f' : '#d1d5db', cursor: canNext ? 'pointer' : 'not-allowed' }}
+          >
+            &#8250;
+          </button>
+        </div>
+
+        {events.length > VISIBLE && (
+          <div className="flex justify-center gap-2 mt-6">
+            {Array.from({ length: maxStart + 1 }).map((_, i) => (
+              <button
+                key={i} onClick={() => setStart(i)}
+                className="w-2.5 h-2.5 rounded-full transition-all"
+                style={{ backgroundColor: i === start ? '#2a9d5f' : '#d1d5db', transform: i === start ? 'scale(1.3)' : 'scale(1)' }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {modalImg && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={closeModal}>
+          <button onClick={closeModal} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 flex items-center justify-center text-white text-2xl transition-colors" aria-label="Close">&times;</button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={modalImg.src} alt={modalImg.alt} onClick={(e) => e.stopPropagation()} className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-2xl" />
+        </div>
+      )}
+    </section>
+  );
+}

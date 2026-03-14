@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const events = [
   { src: '/images/gball_home.jpg',    title: 'Grand Ball 2025',                   date: 'April 5, 2025' },
@@ -14,6 +14,17 @@ const VISIBLE = 4;
 
 export default function EventsCarousel() {
   const [start, setStart] = useState(0);
+  const [modalImg, setModalImg] = useState<{ src: string; alt: string } | null>(null);
+
+  const closeModal = useCallback(() => setModalImg(null), []);
+
+  useEffect(() => {
+    if (!modalImg) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeModal(); };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', onKey); };
+  }, [modalImg, closeModal]);
 
   const canPrev = start > 0;
   const canNext = start + VISIBLE < events.length;
@@ -45,7 +56,11 @@ export default function EventsCarousel() {
                 className="flex-1 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow bg-gray-50 group"
                 style={{ minWidth: 0 }}
               >
-                <div className="overflow-hidden" style={{ height: '280px' }}>
+                <div
+                  className="overflow-hidden cursor-pointer"
+                  style={{ height: '280px' }}
+                  onClick={() => setModalImg({ src: event.src, alt: event.title })}
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={event.src}
@@ -97,6 +112,29 @@ export default function EventsCarousel() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {modalImg && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={closeModal}
+        >
+          <button
+            onClick={closeModal}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 hover:bg-white/30 flex items-center justify-center text-white text-2xl transition-colors"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={modalImg.src}
+            alt={modalImg.alt}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-2xl"
+          />
+        </div>
+      )}
     </section>
   );
 }
