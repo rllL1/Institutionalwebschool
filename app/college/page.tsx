@@ -117,13 +117,6 @@ export default function College() {
         </button>
       </section>
 
-<<<<<<< HEAD
-      <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
-=======
-      <div className="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-6">
-    <div className="min-h-screen bg-white">
->>>>>>> 0c1c50c675550aa6ba0be30757f1ba20cae56335
-
       {/* ── Hero ── */}
       <section className="relative h-[440px] md:h-[500px] overflow-hidden">
         <Image
@@ -531,35 +524,14 @@ export default function College() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-10"
+            className="text-center mb-12"
           >
-            <div className="p-6 text-center">
-              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Prayer to St. Dominic Savio</h2>
-            </div>
-            <div className="px-6 pb-8 border-t border-green-100">
-              <div className="pt-6 text-center space-y-6 text-base text-gray-700 leading-relaxed italic">
-                <div className="space-y-1">
-                  <p>ST. DOMINIC SAVIO who learned from the school of St. John Bosco,</p>
-                  <p>who grew in holiness, help us to follow you,</p>
-                  <p>in your love for Jesus and Mother Mary</p>
-                  <p>in your diligence and in fulfilling your duties.</p>
-                </div>
-                <div className="space-y-1">
-                  <p>Help us that we too,</p>
-                  <p>by resolving to die rather than offending God.</p>
-                  <p>May come at last to eternal joys of heaven.</p>
-                </div>
-                <div className="space-y-1 font-semibold not-italic text-green-700">
-                  <p>Amen.</p>
-                </div>
-              </div>
-            </div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Prayer to St. Dominic Savio</h2>
-            <div className="w-12 h-0.5 bg-green-600 mt-2 rounded-full" />
+            <div className="w-12 h-0.5 bg-green-600 mt-3 mx-auto rounded-full" />
           </motion.div>
 
           <motion.div
-            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl"
+            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -576,7 +548,6 @@ export default function College() {
             </p>
           </motion.div>
         </div>
-      </div>
       </section>
 
       {/* ── Footer ── */}
