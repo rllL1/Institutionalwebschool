@@ -49,55 +49,46 @@ export default function College() {
   }, [overviewSlides.length]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="relative w-full overflow-hidden" style={{ height: '600px' }}>
-        {overviewSlides.map((slide, index) => (
-          <div
-            key={slide.src}
-            className="absolute inset-0 transition-opacity duration-1000"
-            style={{ opacity: index === currentSlide ? 1 : 0 }}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+
+      {/* ━━━ Hero ━━━ */}
+      <section className="relative h-[520px] md:h-[560px] overflow-hidden">
+        <Image
+          src="/images/doc_speech.jpg"
+          alt="The College"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-green-950/40 via-black/55 to-black/75" />
+
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+          <motion.p
+            className="text-green-300 text-xs font-semibold tracking-[0.25em] uppercase mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover"
-              style={{ objectPosition: slide.position }}
-            />
-            <div className="absolute inset-0 bg-black/45" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-transparent" />
-
-            <div className="absolute inset-0 flex items-center px-8 md:px-20 lg:px-24">
-              <div className="max-w-3xl text-white">
-                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-emerald-300">
-                  St. Dominic Savio College
-                </p>
-                <h1 className="mb-6 text-4xl font-bold leading-tight drop-shadow-lg md:text-6xl">
-                  {slide.title}
-                </h1>
-                <p className="max-w-2xl text-lg leading-relaxed text-white/85 md:text-2xl">
-                  {slide.subtitle}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-
-        <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-3">
-          {overviewSlides.map((slide, index) => (
-            <button
-              key={slide.src}
-              onClick={() => setCurrentSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className="h-3 w-3 rounded-full transition-all duration-300"
-              style={{
-                backgroundColor: index === currentSlide ? '#2a9d5f' : 'rgba(255,255,255,0.6)',
-                transform: index === currentSlide ? 'scale(1.25)' : 'scale(1)',
-              }}
-            />
-          ))}
+            St. Dominic Savio College — Ibaan
+          </motion.p>
+          <motion.h1
+            className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            The College
+          </motion.h1>
+          <motion.p
+            className="text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            Rooted in faith, driven by excellence — learn about our history, vision, and the values
+            that shape St. Dominic Savio College.
+          </motion.p>
         </div>
 
         <button
@@ -117,7 +108,6 @@ export default function College() {
         </button>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 py-10 space-y-6"></div>
       {/* ── President&rsquo;s Message ── */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
