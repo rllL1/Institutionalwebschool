@@ -18,9 +18,22 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [collegeOpen, setCollegeOpen] = useState(false);
   const [academicsOpen, setAcademicsOpen] = useState(false);
+  const [mobileCollegeOpen, setMobileCollegeOpen] = useState(false);
   const [mobileAcademicsOpen, setMobileAcademicsOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const academicsRef = useRef<HTMLDivElement>(null);
+
+  const openCollegeDropdown = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setCollegeOpen(true);
+  };
+
+  const closeCollegeDropdown = () => {
+    closeTimer.current = setTimeout(() => setCollegeOpen(false), 150);
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -64,10 +77,19 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* The College */}
-            <Link href="/college" className="px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap">
-              The College
-            </Link>
+            {/* The College dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={openCollegeDropdown}
+              onMouseLeave={closeCollegeDropdown}
+            >
+              <Link
+                href="/college"
+                className="flex items-center gap-1 px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap"
+              >
+                The College
+              </Link>
+            </div>
 
             {/* Academics dropdown */}
             <div className="relative" ref={academicsRef}>
@@ -101,7 +123,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Remaining nav items */}
+            {/* Other nav items */}
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -145,7 +167,7 @@ export default function Navbar() {
               The College
             </Link>
 
-            {/* Academics mobile dropdown */}
+            {/* Mobile Academics dropdown */}
             <div>
               <button
                 className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium hover:bg-green-100 transition-colors"
