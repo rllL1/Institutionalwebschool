@@ -4,6 +4,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 
+const collegeLinks = [
+  { name: 'Message of the President', href: '/college#president' },
+  { name: 'SDSC History', href: '/college#history' },
+  { name: 'Vision & Mission', href: '/college#vision-mission' },
+  { name: 'General Goals', href: '/college#general-goals' },
+  { name: 'Educational Philosophy', href: '/college#educational-philosophy' },
+  { name: 'Core Values & Symbols', href: '/college#core-values' },
+  { name: 'SDSC Hymn & Prayer', href: '/college#hymn' },
+];
+
 const academicsSubItems = [
   { name: 'Overview', href: '/academics' },
   { name: 'Basic Education', href: '/academics/basic-education' },
@@ -23,7 +33,6 @@ export default function Navbar() {
   const [mobileCollegeOpen, setMobileCollegeOpen] = useState(false);
   const [mobileAcademicsOpen, setMobileAcademicsOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const academicsRef = useRef<HTMLDivElement>(null);
 
   const openCollegeDropdown = () => {
@@ -88,7 +97,28 @@ export default function Navbar() {
                 className="flex items-center gap-1 px-3 py-2 rounded-md transition-colors duration-200 text-gray-700 hover:bg-green-50 text-sm font-medium hover:text-green-700 whitespace-nowrap"
               >
                 The College
+                <svg className="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </Link>
+              {collegeOpen && (
+                <div
+                  className="absolute top-full left-0 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50"
+                  onMouseEnter={openCollegeDropdown}
+                  onMouseLeave={closeCollegeDropdown}
+                >
+                  {collegeLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+                      onClick={() => setCollegeOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Academics dropdown */}
@@ -162,10 +192,33 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* The College */}
-            <Link href="/college" className="block px-4 py-3 rounded transition-colors text-sm font-medium hover:bg-green-100" style={{ color: '#2a9d5f' }} onClick={() => setIsOpen(false)}>
-              The College
-            </Link>
+            {/* Mobile College dropdown */}
+            <div>
+              <button
+                className="w-full text-left flex items-center justify-between px-4 py-3 text-sm font-medium hover:bg-green-100"
+                style={{ color: '#2a9d5f' }}
+                onClick={() => setMobileCollegeOpen(!mobileCollegeOpen)}
+              >
+                The College
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileCollegeOpen ? 'M5 15l7-7 7 7' : 'M19 9l-7 7-7-7'} />
+                </svg>
+              </button>
+              {mobileCollegeOpen && (
+                <div className="bg-white border-l-2 ml-4" style={{ borderColor: '#2a9d5f' }}>
+                  {collegeLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 hover:text-green-700 transition-colors"
+                      onClick={() => { setIsOpen(false); setMobileCollegeOpen(false); }}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Mobile Academics dropdown */}
             <div>
