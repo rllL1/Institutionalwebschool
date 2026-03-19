@@ -9,7 +9,6 @@ export default function HeroCarousel() {
           muted
           loop
           playsInline
-          poster="/images/doc_speech.jpg"
           className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/videos/savio.mp4" type="video/mp4" />

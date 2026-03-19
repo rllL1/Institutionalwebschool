@@ -4,6 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 
+const collegeSubItems = [
+  { name: 'Overview', href: '/college' },
+  { name: "President's Message", href: '/college#presidents-message' },
+  { name: 'History', href: '/college#history' },
+  { name: 'Vision & Mission', href: '/college#vision-mission' },
+  { name: 'Core Values', href: '/college#core-values' },
+];
+
 const academicsSubItems = [
   { name: 'Overview', href: '/academics' },
   { name: 'Basic Education', href: '/academics/basic-education' },

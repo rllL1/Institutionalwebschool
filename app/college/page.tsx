@@ -117,6 +117,48 @@ export default function College() {
         </button>
       </section>
 
+      <div className="max-w-6xl mx-auto px-4 py-10 space-y-6">
+
+      {/* ── Hero ── */}
+      <section className="relative h-[440px] md:h-[500px] overflow-hidden">
+        <Image
+          src="/images/background.png"
+          alt="SDSC Campus"
+          fill
+          className="object-cover"
+          priority
+          quality={85}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-green-950/40 via-black/55 to-black/75" />
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+          <motion.p
+            className="text-green-300 text-xs font-semibold tracking-[0.25em] uppercase mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            St. Dominic Savio College
+          </motion.p>
+          <motion.h1
+            className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            About the College
+          </motion.h1>
+          <motion.p
+            className="text-gray-300 text-base md:text-lg max-w-2xl leading-relaxed"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
+            33 years of excellence in holistic education &mdash; nurturing leaders
+            with passion, compassion, integrity, and purpose.
+          </motion.p>
+        </div>
+      </section>
+
       {/* ── President&rsquo;s Message ── */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
@@ -484,14 +526,35 @@ export default function College() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="mb-10"
           >
+            <div className="p-6 text-center">
+              <h2 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Prayer to St. Dominic Savio</h2>
+            </div>
+            <div className="px-6 pb-8 border-t border-green-100">
+              <div className="pt-6 text-center space-y-6 text-base text-gray-700 leading-relaxed italic">
+                <div className="space-y-1">
+                  <p>ST. DOMINIC SAVIO who learned from the school of St. John Bosco,</p>
+                  <p>who grew in holiness, help us to follow you,</p>
+                  <p>in your love for Jesus and Mother Mary</p>
+                  <p>in your diligence and in fulfilling your duties.</p>
+                </div>
+                <div className="space-y-1">
+                  <p>Help us that we too,</p>
+                  <p>by resolving to die rather than offending God.</p>
+                  <p>May come at last to eternal joys of heaven.</p>
+                </div>
+                <div className="space-y-1 font-semibold not-italic text-green-700">
+                  <p>Amen.</p>
+                </div>
+              </div>
+            </div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Prayer to St. Dominic Savio</h2>
-            <div className="w-12 h-0.5 bg-green-600 mt-3 mx-auto rounded-full" />
+            <div className="w-12 h-0.5 bg-green-600 mt-2 rounded-full" />
           </motion.div>
 
           <motion.div
-            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl mx-auto"
+            className="bg-green-50/60 rounded-2xl p-8 md:p-10 border border-green-100 max-w-3xl"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -508,6 +571,7 @@ export default function College() {
             </p>
           </motion.div>
         </div>
+      </div>
       </section>
 
       {/* ── Footer ── */}
@@ -549,5 +613,3 @@ export default function College() {
     </div>
   );
 }
-
-
